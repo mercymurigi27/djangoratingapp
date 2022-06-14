@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .pic {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+    .badge2 span {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .badge2 p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div class="container">
+        <div class="card" style="width: 100%;">
+            <img class="card-img-top" style="height: 70vh;" src="{{ post.photo.url}}" alt="{{photo.title}}">
+            <div class="card-body">
+            <h2 class="card-text">Title: {{post.title|title}}&nbsp;&nbsp;<a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h2>
+            <p class="card-text"><em>Description: {{post.description|title}}</em></p>
+            <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}<span style="float: right;">Posted on : {{post.date|date}}</span></p>
+            </div>
+    </div>
+    {% for rating in post.ratings.all  %}
+    {% if forloop.counter is post.ratings.all.count %}
+        <div class="rate 2 " style="display: flex;justify-content: space-evenly;margin-top: 3rem;" >
+            
+                <div class="badge2">
+                   
+                        <span class="badge badge-success pt-2 pb-2 pr-2 pl-2" style="border-radius: 50%;">{{ rating.design_average}}</span>
+                        <p>Design</p>
+                    
+                </div>
+            
+            
+                <div class="badge2">
+                    <span class="badge badge-danger pt-2 pb-2 pr-2 pl-2" style="border-radius: 50%;">{{ rating.usability_average}}</span>
+                    <p>Usability</p>
+                </div>
+          
+            
+                <div class="badge2">
+                    <span class="badge badge-primary pt-2 pb-2 pr-2 pl-2" style="border-radius: 50%;">{{ rating.content_average}}</span>
+                    <p>Content</p>
+            </div>
+            
+              
+        </div>
+        {% endif %}
+        {% endfor %}
+{% if user_rating %}
+<h4>You have already voted!!</h4>
+{% else %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-sm btn-info" value="Save">
+
+</form>
+{% endif %}
+</div>
+{% endblock %}
