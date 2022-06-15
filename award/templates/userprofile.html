@@ -2,7 +2,14 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+<style>
+  .container{
+    background-image: url("/static/images/joana.jpg");
+    background-size: cover;
+  }
+</style>
 
+ <!-- 
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center height=80pc">
      <div class="card p-4">
         <div>
@@ -25,7 +32,7 @@
                     </div>
                  </div> 
                 </div>
-</div>
+</div> --> 
 
 <div class="container mt-5 p-5 ">
     
@@ -41,18 +48,19 @@
               
               <div class="text-center mt-3">
                   <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                  <h5 class="mt-2 mb-0">User Name:{{profile.name}}</h5>
-                  <span>User Bio:</span>
+                  <h4 style="font-weight: bold;" class="mt-2 mb-0">Name:{{profile.name}}</h4>
+                  <h4 style="font-weight: bolder;"><span>User Bio:</span></h4>
+                  <h5 class="fonts">{{profile.bio}} </h5>
                   
-                  <div class="px-4 mt-1">
-                      <p class="fonts">{{profile.bio}} </p>
                   
-                  </div>
+                  <!-- <div class="px-4 mt-1">
+                     
+                  </div> -->
 
-                  <div class="d-flex flex-row justify-content-center align-items-center gap-3"> <span class="idd1">Contact details: {{profile.contact}}</span><span><i class="fa fa-copy"></i></span>
+                  <div class="d-flex flex-row justify-content-center align-items-center gap-1"> <h4><span class="idd1">Contact details: {{profile.contact}}</span></h4>
                   </div>
                   
-                  <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> 
+                  <div class="gap-3 mt-3 p-4 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> 
                   </div>
                   
                   
