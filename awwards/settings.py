@@ -28,19 +28,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 
-cloudinary.config(
-    cloud_name = 'chelangat',
-    api_key = '838883598586798',
-    api_secret = 'lDATFEFSkLWnfFCwgehhoaNpFt8'
-)
 
+
+cloudinary.config( 
+  cloud_name = config('CD_NAME'),
+  api_key = config('CD_API_KEY'), 
+  api_secret = config('CD_API_SECRET')
+)
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'chelangat',
-    'API_KEY': '838883598586798',
-    'API_SECRET': 'lDATFEFSkLWnfFCwgehhoaNpFt8'
+    'CLOUD_NAME':config('CD_NAME') ,
+    'API_KEY': config('CD_API_KEY'),
+    'API_SECRET': config('CD_API_SECRET')
 }
 
 
@@ -68,6 +69,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'award',
     'cloudinary',
+    
 ]
 
 MIDDLEWARE = [

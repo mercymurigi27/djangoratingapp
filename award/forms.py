@@ -25,7 +25,7 @@ class UpdateProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['name','prof_pic', 'bio','contact']
+        fields = ['name','prof_pic', 'bio','contact',]
 
 class PostForm(forms.ModelForm):
     photo = CloudinaryField('image')

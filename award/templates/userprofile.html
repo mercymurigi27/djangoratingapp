@@ -2,10 +2,77 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="container" style="margin-top:7%">
-    <img class="rounded-circle account-img content-center" src="{{ user_prof.profile.prof_pic.url }}">
-    <p class="text-center">{{user_prof.username}}</p>
-    <p class="text-center"> {{user_prof.email}}</p>
+
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center height=80pc">
+     <div class="card p-4">
+        <div>
+            <title>Profile Information</title>
+        </div>
+          <div class=" image d-flex flex-column justify-content-center align-items-center">
+               <button class="btn btn-secondary">
+                    <img src= "{{ profile.prof_pic.url }}" height="100" width="100" />
+                </button> 
+                <span class="name mt-3"></span>User Name:{{profile.name}} <span class="idd"></span> 
+                <div class="d-flex flex-row justify-content-center align-items-center gap-3"> <span class="idd1">Contact details: {{profile.contact}}</span>
+                     <span> <i class="fa fa-copy"></i></span> 
+                    </div>
+                      <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> 
+                    </div>
+                     <div class="text mt-3"> User Bio <span>:{{profile.bio}}</span>
+                     </div>
+                      <div class="gap-3 mt-3 icons d-flex "> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> 
+                    </div>
+                    </div>
+                 </div> 
+                </div>
 </div>
 
+<div class="container mt-5 p-5 ">
+    
+  <div class="row d-flex justify-content-center">
+      
+      <div class="col-md-7">
+          
+          <div class="card p-3 py-4">
+              
+              <div class="text-center">
+                  <img src= "{{ profile.prof_pic.url }}" width="100" class="rounded-circle">
+              </div>
+              
+              <div class="text-center mt-3">
+                  <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                  <h5 class="mt-2 mb-0">User Name:{{profile.name}}</h5>
+                  <span>User Bio:</span>
+                  
+                  <div class="px-4 mt-1">
+                      <p class="fonts">{{profile.bio}} </p>
+                  
+                  </div>
+
+                  <div class="d-flex flex-row justify-content-center align-items-center gap-3"> <span class="idd1">Contact details: {{profile.contact}}</span><span><i class="fa fa-copy"></i></span>
+                  </div>
+                  
+                  <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> 
+                  </div>
+                  
+                  
+                  <div class="buttons">
+                      
+                      <button class="btn btn-outline-primary px-4">Edit Profile</button>
+                      <button class="btn btn-primary px-4 ms-3">Contact</button>
+                  </div>
+                  
+                  
+              </div>
+              
+             
+              
+              
+          </div>
+          
+      </div>
+      
+  </div>
+  
+</div>
 {% endblock %}

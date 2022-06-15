@@ -13,7 +13,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
     prof_pic = CloudinaryField('image')
     bio = models.CharField(max_length=30,blank=True,null=True)
-    contact = models.EmailField(max_length=100)
+    contact = models.CharField(max_length=100)
     name = models.CharField(blank=True,max_length=100)
 
     def __str__(self):

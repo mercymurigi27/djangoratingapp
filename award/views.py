@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from awards.models import Post
+from award.models import Post
 from .serializers import PostSerializer, ProfileSerializer
 from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm,PostForm,RatingsForm
 from rest_framework.generics import ( ListAPIView)
@@ -20,7 +20,7 @@ def registration(request):
             email = form.cleaned_data.get['email']
             username = form.cleaned_data.get('username')
 
-            messages.success(request,f'Account for {username} created,you can now login')
+            messages.success(request,f'Account for {username} created successfully,you can now login')
             return redirect('login')
         else:
             form = RegisterForm()
@@ -118,16 +118,19 @@ def logout_then_login(request):
 def profile(request):
     current_user = request.user
     posts = Post.objects.filter(user=current_user.id).all
-    return render(request,'profile.html',{"posts": posts})
+    profile = Profile.objects.get(user=current_user)
+    print(profile)
+    return render(request,'userprofile.html',{"posts": posts, "profile":profile})
 
 
 def user_profile(request, username):
     user_prof = get_object_or_404(User, username=username)
     if request.user == user_prof:
-        return redirect('profile', username=request.user.username)
+        return redirect('userprofile', username=request.user.username)
     params = {
         'user_prof': user_prof,
     }
+    
     return render(request, 'userprofile.html', params)
 
 @login_required(login_url='/accounts/login/')
